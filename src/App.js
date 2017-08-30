@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -17,5 +17,26 @@ class App extends Component {
     );
   }
 }
+
+export default App;*/
+
+import React from 'react';
+import { Route, Link } from 'react-router-dom'
+import Home from './containers/home'
+import Stock from './containers/stock'
+
+const App = () => (
+    <div>
+        <header>
+            <Link to="/">Home</Link>
+            <Link to="/stock">About</Link>
+        </header>
+
+        <main>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/stock" component={Stock} />
+        </main>
+    </div>
+)
 
 export default App;
