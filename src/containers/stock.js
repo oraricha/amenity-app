@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import fetch from 'whatwg-fetch'
 
-const getData = () => {
-    fetch('https://www.quandl.com/api/v3/datasets/WIKI/goog/data.json')
+const getData = (stockName) => {
+    fetch(`https://www.quandl.com/api/v3/datasets/WIKI/${stockName}/data.json`)
         .then((response) => {
             console.log(response);
             return response;
@@ -33,7 +33,7 @@ class Stock extends Component {
     }
 
     componentDidMount() {
-        this.getData().then((data) => {
+        this.getData(this.props.match.params.stockName).then((data) => {
             console.log(data);
         });
     }
@@ -44,6 +44,7 @@ class Stock extends Component {
                 <div className="App-header">
                     {/*<img src={logo} className="App-logo" alt="logo" />*/}
                     <h2>Welcome to React</h2>
+                    <h2>{this.props.match.params.stockName}</h2>
                 </div>
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
@@ -52,5 +53,9 @@ class Stock extends Component {
         );
     }
 }
+
+// Stock.propTypes = {
+//     stockName: React.PropTypes.string
+// };
 
 export default Stock;
