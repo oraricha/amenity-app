@@ -1,0 +1,22 @@
+.navbar {
+    height: 60px;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    background-color: #0f5fc6;
+    box-shadow: 0px 2px 5px 2px #5E5E59;
+}
+
+.navbar .logo {
+    background: url('./logo.png');
+    width: 150px;
+    height: 42px;
+    background-size: cover;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+main {
+    margin-top: 60px;
+}

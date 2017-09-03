@@ -24,9 +24,11 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom'
 import Home from './containers/home'
 import Stock from './containers/stock'
+import Navbar from './components/Navbar/Navbar'
 
 const App = () => (
     <div>
+        <Navbar/>
         <header>
             <Link to="/">Home</Link>
             <Link to="/stock">About</Link>
