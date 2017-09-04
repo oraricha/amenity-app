@@ -30,27 +30,10 @@ window.Highcharts = Highcharts;
 class Stock extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     chartConfigReady: false
-        // };
-
-        // this.prop.chartConfig = false;
-        // this.Stocks = {
-        //     'goog': 'Google',
-        //     'amzn': 'Amazon',
-        //     'ibm': 'IBM',
-        // };
     }
 
     getData(stockName) {
-        // this.props.dispatch(loadStocks);
         this.props.loadStocks(stockName);
-        // return fetch(`https://www.quandl.com/api/v3/datasets/WIKI/${stockName}/data.json`)
-        //     .then((response) => {
-        //         return response.json().then(function(data) {
-        //             return data;
-        //         });
-        //     });
     }
 
     getConfig(data) {
@@ -72,69 +55,13 @@ class Stock extends Component {
         };
 
     }
-    //
-    // normalizeStockData(data) {
-    //     let rawData;
-    //     rawData = data.dataset_data.data;
-    //     rawData = rawData
-    //         .map((item) =>
-    //             [ new Date (`${item[0]}`).getTime(), item[4]])
-    //         .reverse();
-    //     return rawData;
-    // }
 
     componentDidMount() {
-        // console.log('Will MOUNT111111');
-        // let self = this;
         if (this.props.match.params.stockName) {
             this.getData(this.props.match.params.stockName)
-                // .then((data) => {
-                //     console.log(data);
-                //     this.normalizeStockData(data);
-                //     self.setState({chartConfig: this.getConfig(this.normalizeStockData(data))});
-                // });
         }
     }
 
-    // componentWillUpdate() {
-    //     console.log('componentWillUpdate WILLL =====1111===');
-    //     console.log('loading:', this.props.loading);
-    //     console.log('stockData:', this.props.stockData);
-    //     // const data = this.props.stockData;
-    //     // if (data) {
-    //     //     console.log(data);
-    //     //     this.normalizeStockData(data);
-    //     //     // this.setState({chartConfig: this.getConfig(this.normalizeStockData(data))});
-    //     //     this.props.chartConfig = this.getConfig(this.normalizeStockData(data));
-    //     // }
-    // }
-
-    // componentDidUpdate() {
-    //     console.log('componentDidUpdate DIDDD =====00===');
-    //     console.log('loading:', this.props.loading);
-    //     console.log('stockData:', this.props.stockData);
-    //     const data = this.props.stockData;
-    //     // if (data && !this.state.chartConfigReady) {
-    //     //     console.log(data);
-    //     //     // this.normalizeStockData(data);
-    //     //     // this.setState({chartConfig: this.getConfig(this.normalizeStockData(data))});
-    //     //     // this.props.chartConfig = this.getConfig(this.normalizeStockData(data));
-    //     //     this.setState({ chartConfigReady: true })
-    //     //     // this.render();
-    //     // }
-    // }
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     debugger;
-    //     console.log(nextProps);
-    //     console.log(nextState);
-    //     return true;
-    // }
-
-    // componentWillReceiveProps(nextProps) {
-    //     console.log('componentWillReceiveProps');
-    //     console.log(nextProps);
-    // }
 
     render() {
         const stock = getStockByCode(this.props.match.params.stockName);
@@ -149,7 +76,6 @@ class Stock extends Component {
         }
 
         if (chartConfig) {
-            // chartConfig = this.getConfig(this.normalizeStockData(data));
             chart = <ReactHighstock config = {chartConfig} />;
         }
 
@@ -180,8 +106,3 @@ export default connect(
 Stock.defaultProps = {
     chartConfig: false
 };
-// Stock.propTypes = {
-//     stockName: React.PropTypes.string
-// };
-
-// export default Stock;
