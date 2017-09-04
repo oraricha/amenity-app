@@ -1,8 +1,10 @@
 ul.stocks {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    margin: 50px 300px;
+    padding: 0;
 }
 ul.stocks li {
     box-shadow: 0 2px 8px 0 #5E5E59;
