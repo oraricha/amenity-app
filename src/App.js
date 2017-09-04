@@ -22,8 +22,8 @@ export default App;*/
 
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
-import Home from './containers/home'
-import Stock from './containers/stock'
+import Home from './containers/Home/Home'
+import Stock from './containers/Stock/Stock'
 import Navbar from './components/Navbar/Navbar'
 
 const App = () => (

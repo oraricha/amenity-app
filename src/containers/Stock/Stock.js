@@ -7,9 +7,10 @@ import {
     loadStocks,
     loadStocksSuccess,
     // loadStocksFail
-} from '../modules/chart';
+} from '../../modules/chart';
+import { getStockByCode } from '../../helpers/utils'
+import './Stock.css';
 window.Highcharts = Highcharts;
-// import fetch from 'whatwg-fetch'
 
 // const getData = (stockName) => {
 //     fetch(`https://www.quandl.com/api/v3/datasets/WIKI/${stockName}/data.json`)
@@ -82,11 +83,10 @@ class Stock extends Component {
     //     return rawData;
     // }
 
-    componentWillMount() {
-        console.log('Will MOUNT111111');
+    componentDidMount() {
+        // console.log('Will MOUNT111111');
         // let self = this;
         if (this.props.match.params.stockName) {
-
             this.getData(this.props.match.params.stockName)
                 // .then((data) => {
                 //     console.log(data);
@@ -96,47 +96,48 @@ class Stock extends Component {
         }
     }
 
-    componentWillUpdate() {
-        console.log('componentWillUpdate WILLL =====1111===');
-        console.log('loading:', this.props.loading);
-        console.log('stockData:', this.props.stockData);
-        // const data = this.props.stockData;
-        // if (data) {
-        //     console.log(data);
-        //     this.normalizeStockData(data);
-        //     // this.setState({chartConfig: this.getConfig(this.normalizeStockData(data))});
-        //     this.props.chartConfig = this.getConfig(this.normalizeStockData(data));
-        // }
-    }
+    // componentWillUpdate() {
+    //     console.log('componentWillUpdate WILLL =====1111===');
+    //     console.log('loading:', this.props.loading);
+    //     console.log('stockData:', this.props.stockData);
+    //     // const data = this.props.stockData;
+    //     // if (data) {
+    //     //     console.log(data);
+    //     //     this.normalizeStockData(data);
+    //     //     // this.setState({chartConfig: this.getConfig(this.normalizeStockData(data))});
+    //     //     this.props.chartConfig = this.getConfig(this.normalizeStockData(data));
+    //     // }
+    // }
 
-    componentDidUpdate() {
-        console.log('componentDidUpdate DIDDD =====00===');
-        console.log('loading:', this.props.loading);
-        console.log('stockData:', this.props.stockData);
-        const data = this.props.stockData;
-        // if (data && !this.state.chartConfigReady) {
-        //     console.log(data);
-        //     // this.normalizeStockData(data);
-        //     // this.setState({chartConfig: this.getConfig(this.normalizeStockData(data))});
-        //     // this.props.chartConfig = this.getConfig(this.normalizeStockData(data));
-        //     this.setState({ chartConfigReady: true })
-        //     // this.render();
-        // }
-    }
+    // componentDidUpdate() {
+    //     console.log('componentDidUpdate DIDDD =====00===');
+    //     console.log('loading:', this.props.loading);
+    //     console.log('stockData:', this.props.stockData);
+    //     const data = this.props.stockData;
+    //     // if (data && !this.state.chartConfigReady) {
+    //     //     console.log(data);
+    //     //     // this.normalizeStockData(data);
+    //     //     // this.setState({chartConfig: this.getConfig(this.normalizeStockData(data))});
+    //     //     // this.props.chartConfig = this.getConfig(this.normalizeStockData(data));
+    //     //     this.setState({ chartConfigReady: true })
+    //     //     // this.render();
+    //     // }
+    // }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        debugger;
-        console.log(nextProps);
-        console.log(nextState);
-        return true;
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     debugger;
+    //     console.log(nextProps);
+    //     console.log(nextState);
+    //     return true;
+    // }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('componentWillReceiveProps');
-        console.log(nextProps);
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     console.log('componentWillReceiveProps');
+    //     console.log(nextProps);
+    // }
 
     render() {
+        const stock = getStockByCode(this.props.match.params.stockName);
         console.log('render!!');
         console.log('loading:', this.props.loading);
         // const chartConfig = this.state.chartConfig;
@@ -154,12 +155,7 @@ class Stock extends Component {
 
         return (
             <div className="stock-screen">
-                <div className="App-header">
-                </div>
-                <h2>{this.props.match.params.stockName}</h2>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
+                <h2>{stock.name}</h2>
                 {chart}
             </div>
         );
@@ -167,7 +163,6 @@ class Stock extends Component {
 }
 
 const mapStateToProps = state => ({
-    // count: state.counter.count,
     loading: state.chart.loading,
     stockData: state.chart.stockData,
 });

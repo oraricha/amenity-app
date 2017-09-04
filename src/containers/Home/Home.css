@@ -1,0 +1,27 @@
+ul.stocks {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+ul.stocks li {
+    box-shadow: 0 2px 8px 0 #5E5E59;
+    margin-bottom: 30px;
+}
+
+.stock-box {
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 200px;
+    background-color: #0f5fc6;
+    color: #fff;
+    font-size: 30px;
+    transition: .2s ease-out;
+}
+.stock-box:hover {
+    background-color: #0f6cf8;
+    transform: scale(1.1);
+}
