@@ -43,7 +43,7 @@ export function getStockByCode(code) {
             },
             'appl':{
                 name: 'Apple',
-                code: 'appl'
+                code: 'AAPL'
             },
             'ibm':{
                 name: 'IBM',
@@ -55,7 +55,7 @@ export function getStockByCode(code) {
             },
             'hp':{
                 name: 'HP',
-                code: 'hp'
+                code: 'HPQ'
             },
             'NVDA':{
                 name: 'Nvidia',
